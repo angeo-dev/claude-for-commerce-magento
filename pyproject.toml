@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "magento-storefront-backend"
+version = "0.1.0"
+description = "Magento 2 / Adobe Commerce implementation of the Claude Commerce Agents StorefrontBackend."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Angeo", email = "info@angeo.dev" }]
+keywords = ["magento", "adobe-commerce", "claude", "agentic-commerce", "mcp", "aeo"]
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  # Installed from the blueprint checkout; see README "Install".
+  "shopping-agent-core",
+  "httpx>=0.27",
+  "pydantic>=2.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "ruff>=0.6"]
+
+[project.urls]
+Homepage = "https://angeo.dev"
+Source = "https://github.com/angeo-dev/claude-for-commerce-magento"
+Blueprint = "https://github.com/anthropics/commerce-agents"
+
+[tool.hatch.build.targets.wheel]
+packages = ["magento_storefront"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
